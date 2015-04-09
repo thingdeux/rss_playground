@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+    <head>
+        <title>RSS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" media="screen" />
+        <link rel="stylesheet" href="{% static "images.css" %}" />
+
+<style type="text/css">
+    body {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    @media (min-width: 768px) {
+        .container {
+            max-width: 730px;
+        }
+    }
+    .container .jumbotron {
+        padding: 40px;
+    }
+    .jumbotron .header {
+        text-align: center;
+    }
+    .jumbotron p {
+        font-size: 18px;
+    }
+    {% block extra_inline_css %}
+    {% endblock %}
+</style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <div class="header">
+                    <a class="wiredrive-logo-image" href="http://www.wiredrive.com"></a>
+                    <h1>RSS Parser</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                {% block items %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

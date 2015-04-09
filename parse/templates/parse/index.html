@@ -1,0 +1,52 @@
+{% extends "parse/base.html" %}
+{% load pretty_collections %}
+{% load dict_get_image %}
+
+{% block extra_inline_css %}
+    .row {
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    .a.thumbnail {
+        height: 165px;
+    }
+
+    @media all {
+        .container {
+            width: 970px;
+            max-width: 970px;
+            min-width: 970px;
+        }
+    }
+
+    object {
+        background-color: #000;
+    }
+    .item-key {
+        font-weight: bold;
+        padding-bottom: 10px;
+    }
+    .item-img {
+        position: relative;
+    }
+
+{% endblock %}
+
+{% block items %}
+    {% for dict in feed_items %}
+        <div class="row">
+            {% with img_index=forloop.counter|add:"0" %}
+            <div class="col-md-2 thumbnail">
+                <img src={{feed_images|dict_get_image:img_index}} />
+            </div>
+            {% endwith %}
+
+            <div class="col-md-10">
+                {% for key, value in dict.iteritems %}
+                    <div class="item-key">{{ key|capfirst }}:</div> <pre>{{ value|pretty_collections }}</pre><br>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
