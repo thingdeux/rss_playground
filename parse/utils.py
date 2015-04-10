@@ -33,11 +33,8 @@ def generate_media_details_from_rss(url):
                 for key, value in temp_dict.iteritems():
                     if key == "media_content":
                         duration = value[0].get('duration', None)
-                        vid_type = value[0].get('type', None)
                         if duration is not None:
-                            item['duration'] = duration
-                        if vid_type is not None:
-                            item['compression'] = vid_type
+                            item['duration'] = "{} seconds".format(duration)
 
                         # Bitrate options ... I already have the resolution and length
                         # Of the video file, without knowing the audio bitrate calculating may be innacurate.
