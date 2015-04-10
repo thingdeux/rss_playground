@@ -7,15 +7,22 @@ register = template.Library()
 @register.filter(name="pretty_collections")
 def pretty_collections(value):
     if isinstance(value, dict):
-        return_string = u''
-        for key, value in value.iteritems():
-            return_string = return_string + u'\r' + u"{}: {}".format(key, value)
-        return return_string
+        return pretty_print_dicts(value)
 
     elif isinstance(value, list):
         return_string = u''
         for item in value:
-            return_string = return_string + u'\r' + u"{}".format(item)
+            if isinstance(item, dict):
+                return_string += pretty_print_dicts(item)
+            else:
+                return_string += u'\r' + u"{}".format(item)
         return return_string
     else:
         return value
+
+
+def pretty_print_dicts(dict):
+    str_to_return = u''
+    for key, value in dict.iteritems():
+            str_to_return += u'\r' + u"{}: {}".format(key, value)
+    return str_to_return
