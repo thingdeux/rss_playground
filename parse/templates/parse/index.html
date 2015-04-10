@@ -3,6 +3,9 @@
 {% load dict_get_image %}
 
 {% block extra_inline_css %}
+    pre {
+        font-size: 12px;
+    }
     .row {
         margin-top: 10px;
         margin-bottom: 30px;
@@ -44,7 +47,7 @@
 
             <div class="col-md-10">
                 {% for key, value in dict.iteritems %}
-                    <div class="item-key">{{ key|capfirst }}:</div> <pre>{{ value|pretty_collections }}</pre><br>
+                    <div class="item-key">{{ key|capfirst }}:</div> <pre>{{ value|pretty_collections }}</pre>
                 {% endfor %}
             </div>
         </div>
