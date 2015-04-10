@@ -1,6 +1,7 @@
 # rss_playground
 
 Using Django 1.8
+
 Consumes rss feed and generates media info html.
 
 To Run From Scratch:
