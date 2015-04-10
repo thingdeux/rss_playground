@@ -1,4 +1,4 @@
-# rss_playground
+# RSS Playground
 
 #### Uses Django 1.8
 
